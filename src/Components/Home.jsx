@@ -5,9 +5,10 @@ import { useNavigate } from "react-router-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import axios from "axios";
 
-const Home = () => {
+
+const Home = ({ setSearchValue }) => {
   let navigate = useNavigate();
-  const [isLoading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(false);
 
   //   document.getElementById('searchInput').addEventListener('keypress',
   //     (event) => {
@@ -20,15 +21,19 @@ const Home = () => {
   //       document.body.classList += "results--searched"
   //     }
 
-  async function fetchMovies(tite) {
-    setLoading(true);
-    const moviesData = await axios.get(
-      `https://omdbapi.com/?s=${searchQuery}&apikey=b59e5615`
-    );
-    if (moviesData.Search) {
-      renderMovies(moviesData.Search); // pass the data to renderMovies
-      updateSearchResultsText(searchQuery);
-    }
+  // async function fetchMovies(tite) {
+  //   setLoading(true);
+  //   const moviesData = await axios.get(
+  //     `https://omdbapi.com/?s=${searchQuery}&apikey=b59e5615`
+  //   );
+  //   if (moviesData.Search) {
+  //     renderMovies(moviesData.Search); // pass the data to renderMovies
+  //     updateSearchResultsText(searchQuery);
+  //   }
+  // }
+
+  function handleSearch() {
+    console.log("Search")
   }
 
   //     function renderMovies(movies) {
@@ -102,11 +107,11 @@ const Home = () => {
                 type="text"
                 placeholder="Search your favourite movies"
                 id="searchInput"
-                onchange="filterMoviesSearch(event)"
+                onChange={(event) => setSearchValue(event.target.value)}
               />
               <button
                 className="load__search--results"
-                onClick="handleSearch()"
+                onClick={handleSearch}
               >
                 {isLoading}
                 <svg
@@ -118,7 +123,7 @@ const Home = () => {
                   role="img"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512"
-                  class="svg-inline--fa fa-search fa-w-16"
+                  className="svg-inline--fa fa-search fa-w-16"
                 >
                   <path
                     data-v-2a11e7ca=""
