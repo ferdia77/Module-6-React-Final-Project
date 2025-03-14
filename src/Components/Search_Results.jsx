@@ -5,15 +5,17 @@ import axios from "axios";
 const Search_Results = ({ searchValue, setSearchValue }) => {
   const [movies, setMovies] = useState([]);
 
-
   async function fetchMovies() {
-    //setLoading(true);
     const moviesData = await axios.get(
       `https://omdbapi.com/?s=${searchValue}&apikey=b59e5615`
     );
-    if (moviesData.Search) {
-      setMovies(moviesData.Search); // pass the data to renderMovies
+    console.log(moviesData);
+    if (moviesData.data.Search) {
+      setMovies(moviesData.Search);
     }
+  }
+
+  {
   }
 
   function handleSearch() {
@@ -22,8 +24,8 @@ const Search_Results = ({ searchValue, setSearchValue }) => {
   }
 
   useEffect(() => {
-    console.log(movies)
-  }, [movies])
+    console.log(movies);
+  }, [movies]);
 
   //  function renderMovies(movies) {
   //            if(!movies) return

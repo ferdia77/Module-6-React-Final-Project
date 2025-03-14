@@ -4,65 +4,22 @@ import Building from "../assets/Building.png";
 import { useNavigate } from "react-router-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import axios from "axios";
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom"
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 
 const Home = ({ setSearchValue }) => {
   let navigate = useNavigate();
   const [isLoading, setLoading] = useState(false);
 
-  //   document.getElementById('searchInput').addEventListener('keypress',
-  //     (event) => {
-  //       if(event.key === 'Enter') {
-  //         handleSearch();
-  //       }
-  //     });
-
-  //     function openSearchResults() {
-  //       document.body.classList += "results--searched"
-  //     }
-
-  // async function fetchMovies(tite) {
-  //   setLoading(true);
-  //   const moviesData = await axios.get(
-  //     `https://omdbapi.com/?s=${searchQuery}&apikey=b59e5615`
-  //   );
-  //   if (moviesData.Search) {
-  //     renderMovies(moviesData.Search); // pass the data to renderMovies
-  //     updateSearchResultsText(searchQuery);
-  //   }
-  // }
+  
 
   function handleSearch() {
     console.log("Search")
+    navigate('/Search_Results')
   }
 
-  //     function renderMovies(movies) {
-  //       if(!movies) return
-  //       const moviesDataWrapper = document.querySelector('.movies');
-  //       const myInput = document.querySelector('#searchinput')
-  //       moviesDataWrapper.innerHTML = movies
-  //       .slice(0, 6).map((movie) => {
-  //         return `<div class="movie">
-  //                   <figure class="movie__img--wrapper">
-  //                       <img src="${movie.Poster}" alt="${movie.Title}">
-  //                   </figure>
-  //                   <div class="movie__title">
-  //                       ${movie.Title}
-  //                   </div>
-  //                   <div class="movie__year">
-  //                       ${movie.Year}
-  //                   </div>
-//                   </div>`
-  //                   })
-  //                   .join(''); // Join the array to create a single HTML string
-  //     }
-
-  //     function updateSearchResultsText(searchQuery) {
-  //       const searchResultsElemnt = document.querySlector ("search__results");
-  //       searchResultsElemnt.textContent = searchQuery
-  //         ? `Search results for:${searchQuery}`
-  //         : "Search for your movie";
-  //     }
+  
 
   function showSpinnerLoadingState(isLoading) {
     const spinner = document.querySelector("fa-spinner");
@@ -71,6 +28,7 @@ const Home = ({ setSearchValue }) => {
     }
   }
 
+  
  
 
   return (
