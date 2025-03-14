@@ -4,10 +4,10 @@
   box-sizing: border-box;
 }
 
-/* .navbar__wrapper {
+.navbar__wrapper {
   background: url("./assets/carpark.8742e246.jpeg");
   position: relative;
-} */
+}
 
 .overlay::after {
   content: "";
@@ -167,7 +167,7 @@ nav {
   line-height: 40px;
 }
 
-.not__loading {
+.load__search--results {
   border: 1px solid #6030b1;
   background-color: #6030b1;
   box-shadow: 7px 7px 14px rgba(134, 93, 204, .3);

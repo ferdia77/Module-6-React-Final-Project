@@ -4,10 +4,10 @@ import WhiteBlinker from "../assets/WhiteBlinker.png"
 const Search_Results = () => {
   return (
     <>
-        <div class="navbar__wrapper">
-            <div class="overlay"></div>
-                <nav class="content__wrapper">
-                    <div class="blinker">
+        <div className="navbar__wrapper">
+            <div className="overlay"></div>
+                <nav className="content__wrapper">
+                    <div className="blinker">
                     <img
                         className="blinker__logo"
                         src={WhiteBlinker}
@@ -34,7 +34,7 @@ const Search_Results = () => {
                 
                 type="text"
                 
-                placeholder="Search by Model, Make or Keyword"
+                placeholder="Search your favourite movies"
 
                 id="searchInput" onchange="filterMoviesSearch(event)"
                 
@@ -94,7 +94,7 @@ const Search_Results = () => {
                 </select>
                 </div>
                 <div className="movies">
-                <i className="fas fa-spinner movies__loading--spinner"></i>
+                    <i className="fas fa-spinner movies__loading--spinner"></i>
                 </div>
             </div>
             </div>
