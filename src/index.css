@@ -317,3 +317,8 @@ width: 100%;
   font-size: 16px;
   font-weight: 500;
 }
+
+.spinner {
+  display: flex;
+  align-items: center;
+}

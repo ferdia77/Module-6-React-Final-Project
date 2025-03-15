@@ -11,12 +11,10 @@ const Search_Results = ({ searchValue, setSearchValue }) => {
     );
     console.log(moviesData);
     if (moviesData.data.Search) {
-      setMovies(moviesData.Search);
+      setMovies(moviesData.data.Search);
     }
   }
 
-  {
-  }
 
   function handleSearch() {
     fetchMovies();
@@ -67,12 +65,12 @@ const Search_Results = ({ searchValue, setSearchValue }) => {
             </a>
             <a className="nav__link--white" href="/findyourcar">
               {" "}
-              Find Your Car{" "}
+              Find Your Favourite Film{" "}
             </a>
             <a className="button__contact"> CONTACT </a>
           </div>
         </nav>
-        <h1 className="header__browse">Browse Our Cars</h1>
+        <h1 className="header__browse">Browse Our Filmbase <br /> We have all your favourites!</h1>
         <div className="search-container">
           <div className="search__btn">
             <input
@@ -119,7 +117,20 @@ const Search_Results = ({ searchValue, setSearchValue }) => {
               </select>
             </div>
             <div className="movies">
-              <i className="fas fa-spinner movies__loading--spinner"></i>
+            {movies
+                .slice(0, 6).map((movie, index) => {
+                    return <div className="movie" key={index}>
+                                <figure className="movie__img--wrapper">
+                                    <img src={movie.Poster} alt={movie.Title}/>
+                                </figure>
+                                <div className="movie__title">
+                                    {movie.Title}
+                                </div>
+                                <div className="movie__year">
+                                    {movie.Year}
+                                </div>
+                            </div> 
+                })}
             </div>
           </div>
         </div>

@@ -22,7 +22,7 @@ const Home = ({ setSearchValue }) => {
   
 
   function showSpinnerLoadingState(isLoading) {
-    const spinner = document.querySelector("fa-spinner");
+    const spinner = ("fa-spinner");
     if (spinner) {
       spinner.computedStyleMap.display = isLoading ? "block" : "none";
     }
