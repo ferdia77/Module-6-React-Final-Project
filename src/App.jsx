@@ -18,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home setSearchValue={setSearchValue} /> }  />
           <Route path="/Search_Results" element={<Search_Results setSearchValue={setSearchValue} searchValue={searchValue} />} />
+          {/* <Route path="/Search_Results/2" element={<Search_Results setSearchValue={setSearchValue} searchValue={searchValue} />} /> */}
           <Route path="/Spinner" element={<Spinner />} />
           
         </Routes>

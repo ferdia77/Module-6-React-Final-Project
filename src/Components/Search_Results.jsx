@@ -1,20 +1,28 @@
 import React, { useEffect, useState } from "react";
 import WhiteBlinker from "../assets/WhiteBlinker.png";
 import axios from "axios";
+import Movie from "../Pages/Movie";
+import Spinner from "./Spinner";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Movies from "../assets/Movies.png";
+import { useNavigate } from "react-router-dom";
 
 const Search_Results = ({ searchValue, setSearchValue }) => {
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(false);
+  let navigate = useNavigate()
 
   async function fetchMovies() {
+    setLoading(true);
     const moviesData = await axios.get(
       `https://omdbapi.com/?s=${searchValue}&apikey=b59e5615`
     );
+    setLoading(false);
     console.log(moviesData);
     if (moviesData.data.Search) {
       setMovies(moviesData.data.Search);
     }
   }
-
 
   function handleSearch() {
     fetchMovies();
@@ -24,27 +32,6 @@ const Search_Results = ({ searchValue, setSearchValue }) => {
   useEffect(() => {
     console.log(movies);
   }, [movies]);
-
-  //  function renderMovies(movies) {
-  //            if(!movies) return
-  //            const moviesDataWrapper = document.querySelector('.movies');
-  //            const myInput = document.querySelector('#searchinput')
-  //            moviesDataWrapper.innerHTML = movies
-  //            .slice(0, 6).map((movie) => {
-  //              return `<div class="movie">
-  //                        <figure class="movie__img--wrapper">
-  //                            <img src="${movie.Poster}" alt="${movie.Title}">
-  //                        </figure>
-  //                        <div class="movie__title">
-  //                            ${movie.Title}
-  //                        </div>
-  //                        <div class="movie__year">
-  //                            ${movie.Year}
-  //                        </div>
-  //                      </div>`
-  //                        })
-  //                        .join('');
-  // }
 
   return (
     <>
@@ -70,7 +57,10 @@ const Search_Results = ({ searchValue, setSearchValue }) => {
             <a className="button__contact"> CONTACT </a>
           </div>
         </nav>
-        <h1 className="header__browse">Browse Our Filmbase <br /> We have all your favourites!</h1>
+        <h1 className="header__browse">
+          Find Your Favourite Film Below{" "}
+          <FontAwesomeIcon icon="fa-solid fa-arrow-down" />{" "}
+        </h1>
         <div className="search-container">
           <div className="search__btn">
             <input
@@ -117,21 +107,15 @@ const Search_Results = ({ searchValue, setSearchValue }) => {
               </select>
             </div>
             <div className="movies">
-            {movies
-                .slice(0, 6).map((movie, index) => {
-                    return <div className="movie" key={index}>
-                                <figure className="movie__img--wrapper">
-                                    <img src={movie.Poster} alt={movie.Title}/>
-                                </figure>
-                                <div className="movie__title">
-                                    {movie.Title}
-                                </div>
-                                <div className="movie__year">
-                                    {movie.Year}
-                                </div>
-                            </div> 
-                })}
+              {loading ? (
+                <Spinner />
+              ) : (
+                movies.slice(0, 6).map((movie, index) => {
+                  return <Movie movie={movie} index={index} />;
+                })
+              )}
             </div>
+            {/* <button onClick={navigate("/Search_Results/2")}>Page 2</button> */}
           </div>
         </div>
       </section>
