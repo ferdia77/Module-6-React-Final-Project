@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const Details = () => {
-    const[movieId, setMovieId] = useState([]);
+    const { imdbID } = useParams()
+    const[movie, setMovie] = useState([])
 
-    async function fetchImdbID() {
-        const movieImdbId = await axios.get(
-            `https://omdbapi.com/?s=fast&page=1&apikey=e3aee4a2`
-            );
-            console.log(movieImdbId)
-            if (movieImdbId.imdbID) {
-                setMovieId(movieImdbId.imdbID)
-            }
-    }
 
     useEffect(() => {
-        console.log(movieId)
-    }, [movieId])
+        async function fetchImdbID() {
+            const movieImdbId = await axios.get(
+                `https://omdbapi.com/?i=${imdbID}&page=1&apikey=e3aee4a2`
+                );
+                setMovie(movieImdbId)
+                console.log(movieImdbId)
+        }
+        fetchImdbID()
+    }, [])
+
+    
 
   return (
     <div className="row__details">
@@ -32,16 +34,12 @@ const Details = () => {
         </div>
 
         <div className="movies__wrapper">
-          <div className="movie__details">"Title": "The Fast and the Furious"</div>
-          <div className="movie__details">"Year": "2001"</div>
-          <div className="movie__details">"Genre": "Action, Crime, Thriller"</div>
-          <div className="movie__details"> "Director": "Rob Cohen"</div>
-          <div className="movie__details">"Actors": "Vin Diesel, Paul Walker, Michelle Rodriguez"</div>
-          <div className="movie__details">
-            "Plot": "Los Angeles police officer Brian O'Conner must decide where
-            his loyalty really lies when he becomes enamored with the street
-            racing world he has been sent undercover to end it."
-          </div>
+          <div className="movie__details">{movie.data.Title}</div>
+          <div className="movie__details">{movie.data.Year}</div>
+          <div className="movie__details">{movie.data.Genre}</div>
+          <div className="movie__details">{movie.data.Director}</div>
+          <div className="movie__details">{movie.data.Actors}</div>
+          <div className="movie__details">{movie.data.Plot}</div>
         </div>
       </div>
     </div>
