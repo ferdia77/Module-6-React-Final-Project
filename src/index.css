@@ -7,7 +7,7 @@
 
 
 .navbar__wrapper {
-  background: url("./assets/carpark.8742e246.jpeg");
+  background: url("./assets/Movies.png");
   position: relative;
 }
 
@@ -324,3 +324,46 @@ width: 100%;
   display: flex;
   align-items: center;
 }
+
+.movie__poster {
+  cursor: pointer;
+}
+
+.movie__title {
+  cursor: pointer;
+}
+
+.movie__year {
+  cursor: pointer;
+}
+
+.movies__wrapper {
+width: (100% / 3 * 2);
+}
+
+.movie__poster {
+  padding: 0 64px ;
+}
+
+.movie__details {
+  padding: 16px 0;
+}
+
+.movie__poster--size {
+  width: 600x;
+  height: 640px;
+}
+
+.movies__row {
+  display: flex;
+}
+
+.div__wrapper {
+  display: flex;
+  padding-top: 32px;
+}
+
+.movie__details {
+  font-size: 24px;
+}
+

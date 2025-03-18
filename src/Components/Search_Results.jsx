@@ -3,8 +3,7 @@ import WhiteBlinker from "../assets/WhiteBlinker.png";
 import axios from "axios";
 import Movie from "../Pages/Movie";
 import Spinner from "./Spinner";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Movies from "../assets/Movies.png";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 
 const Search_Results = ({ searchValue, setSearchValue }) => {
@@ -59,7 +58,7 @@ const Search_Results = ({ searchValue, setSearchValue }) => {
         </nav>
         <h1 className="header__browse">
           Find Your Favourite Film Below{" "}
-          <FontAwesomeIcon icon="fa-solid fa-arrow-down" />{" "}
+          {/* <FontAwesomeIcon icon="fa-solid fa-arrow-down" />{" "} */}
         </h1>
         <div className="search-container">
           <div className="search__btn">
