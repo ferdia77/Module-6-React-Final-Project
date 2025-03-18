@@ -367,3 +367,11 @@ width: (100% / 3 * 2);
   font-size: 24px;
 }
 
+.plot__details {
+  line-height: 1.5;
+}
+
+.title__size {
+  font-weight: 500;
+}
+

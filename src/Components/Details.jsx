@@ -9,14 +9,18 @@ const Details = () => {
 
     useEffect(() => {
         async function fetchImdbID() {
-            const movieImdbId = await axios.get(
-                `https://omdbapi.com/?i=${imdbID}&page=1&apikey=e3aee4a2`
-                );
-                setMovie(movieImdbId)
-                console.log(movieImdbId)
+            try{
+                const movieImdbId = await axios.get(
+                    `https://omdbapi.com/?i=${imdbID}&page=1&apikey=e3aee4a2`
+                    );
+                    setMovie(movieImdbId)
+            } catch (error) {
+                console.error("Error fetching movie data:", error)
+            }
+            
         }
         fetchImdbID()
-    }, [])
+    }, [imdbID])
 
     
 
@@ -34,12 +38,12 @@ const Details = () => {
         </div>
 
         <div className="movies__wrapper">
-          <div className="movie__details">{movie.data.Title}</div>
-          <div className="movie__details">{movie.data.Year}</div>
-          <div className="movie__details">{movie.data.Genre}</div>
-          <div className="movie__details">{movie.data.Director}</div>
-          <div className="movie__details">{movie.data.Actors}</div>
-          <div className="movie__details">{movie.data.Plot}</div>
+          <div className="movie__details"><span className="title__size">Title:</span> {movie.Title}</div>
+          <div className="movie__details"><span className="title__size">Year:</span> {movie.Year}</div>
+          <div className="movie__details"><span className="title__size">Genre:</span> {movie.Genre}</div>
+          <div className="movie__details"><span className="title__size">Director:</span> {movie.Director}</div>
+          <div className="movie__details"><span className="title__size">Actors:</span> {movie.Actors}</div>
+          <div className="movie__details plot__details"><span className="title__size">Plot:</span> <br /> <br />{movie.Plot}</div>
         </div>
       </div>
     </div>
