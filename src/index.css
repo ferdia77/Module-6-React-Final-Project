@@ -338,7 +338,7 @@ width: 100%;
 }
 
 .movies__wrapper {
-width: (100% / 3 * 2);
+width: 50%;
 }
 
 .movie__poster {
@@ -358,7 +358,7 @@ width: (100% / 3 * 2);
   display: flex;
 }
 
-.div__wrapper {
+.row__details {
   display: flex;
   padding-top: 32px;
 }
@@ -375,3 +375,15 @@ width: (100% / 3 * 2);
   font-weight: 500;
 }
 
+.post__title--skeleton {
+  width: 600px;
+  height: 80px;
+  padding: 16px 0;
+  background-color: lightgray;
+}
+
+.poster__skeleton {
+  width: 200px;
+  height: 480px;
+  background-color: lightgray;
+}
