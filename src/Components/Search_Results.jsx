@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 const Search_Results = ({ searchValue, setSearchValue, movies, setMovies }) => {
   
   const [loading, setLoading] = useState(false);
+  const [sortBy, setSortBy] = useState('year');
+  const[sortOrder, setSortOrder] = useState('asc');
   let navigate = useNavigate()
 
   async function fetchMovies() {
@@ -31,27 +33,9 @@ const Search_Results = ({ searchValue, setSearchValue, movies, setMovies }) => {
     console.log(movies);
   }, [movies]);
 
-  function sortMovies (event) {
-    console.log(event)
-    const [sortBy, setSortBy] = useState('year');
-    const[sortOrder, setSortOrder] = useState('asc');
-
-    
-
-        if (sortBy === 'year') {
-            return sortOrder === 'asc' ? yearA - yearB : yearB - yearA;
-        }
-        return 0;
-    }
-
-    const handleSortChange = (event) => {
-        setSortBy(event.target.value);
-    };
-
-    const handleOrderChange = (event) => {
-        setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
-    };
-  }
+ function sortMovies(event) {
+  console.log(event)
+ }
 
   return (
     <>
