@@ -31,19 +31,18 @@ const Search_Results = ({ searchValue, setSearchValue, movies, setMovies }) => {
     console.log(movies);
   }, [movies]);
 
-  function sortMovies ({ movies }) {
+  function sortMovies (event) {
+    console.log(event)
     const [sortBy, setSortBy] = useState('year');
     const[sortOrder, setSortOrder] = useState('asc');
 
-    const sortedMovies = [...movies].sort((a,b) => {
-        const yearA = parseInt(a.year, 10);
-        const yearB = parseInt(b.year, 10);
+    
 
         if (sortBy === 'year') {
             return sortOrder === 'asc' ? yearA - yearB : yearB - yearA;
         }
         return 0;
-    })
+    }
 
     const handleSortChange = (event) => {
         setSortBy(event.target.value);
