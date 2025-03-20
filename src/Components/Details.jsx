@@ -33,7 +33,7 @@ const Details = () => {
         {loading ? ( 
             <>
             <div className="movies__wrapper">
-                <figure>
+                <figure className="movie__poster">
                     <img className="poster__skeleton" src={skeleton} alt="" />
                 </figure>
             </div>

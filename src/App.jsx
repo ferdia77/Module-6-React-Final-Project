@@ -10,6 +10,7 @@ import Details from "./Components/Details";
 
 function App() {
   const [searchValue, setSearchValue] = useState("")
+  const [movies, setMovies] = useState([]);
   
   
 
@@ -18,7 +19,7 @@ function App() {
       <div>
         <Routes>
           <Route path="/" element={<Home setSearchValue={setSearchValue} /> }  />
-          <Route path="/Search_Results" element={<Search_Results setSearchValue={setSearchValue} searchValue={searchValue} />} />
+          <Route path="/Search_Results" element={<Search_Results setSearchValue={setSearchValue} searchValue={searchValue}  movies={movies} setMovies={setMovies} />} />
           <Route path="/Spinner" element={<Spinner />} />
           <Route path="/Details/:imdbID" element={<Details setSearchValue={setSearchValue}/>} />
         </Routes>

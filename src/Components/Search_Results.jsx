@@ -5,8 +5,8 @@ import Movie from "../Pages/Movie";
 import Spinner from "./Spinner";
 import { useNavigate } from "react-router-dom";
 
-const Search_Results = ({ searchValue, setSearchValue }) => {
-  const [movies, setMovies] = useState([]);
+const Search_Results = ({ searchValue, setSearchValue, movies, setMovies }) => {
+  
   const [loading, setLoading] = useState(false);
   let navigate = useNavigate()
 
@@ -30,6 +30,29 @@ const Search_Results = ({ searchValue, setSearchValue }) => {
   useEffect(() => {
     console.log(movies);
   }, [movies]);
+
+  function sortMovies ({ movies }) {
+    const [sortBy, setSortBy] = useState('year');
+    const[sortOrder, setSortOrder] = useState('asc');
+
+    const sortedMovies = [...movies].sort((a,b) => {
+        const yearA = parseInt(a.year, 10);
+        const yearB = parseInt(b.year, 10);
+
+        if (sortBy === 'year') {
+            return sortOrder === 'asc' ? yearA - yearB : yearB - yearA;
+        }
+        return 0;
+    })
+
+    const handleSortChange = (event) => {
+        setSortBy(event.target.value);
+    };
+
+    const handleOrderChange = (event) => {
+        setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+    };
+  }
 
   return (
     <>
@@ -99,9 +122,9 @@ const Search_Results = ({ searchValue, setSearchValue }) => {
               <div className="search__results">
                 Search results for "{searchValue}"
               </div>
-              <select id="filter">
-                <option value="NEW_TO_OLD">Year, New to Old</option>
-                <option value="HIGH_TO_LOW">Year, Old to New</option>
+              <select id="filter" onChange={(event) => sortMovies(event.target.value)}>
+                <option value="NEW_TO_OLD" > New to Old</option>
+                <option value="HIGH_TO_LOW"> Old to New</option>
               </select>
             </div>
             <div className="movies">
