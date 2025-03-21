@@ -6,6 +6,8 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import axios from "axios";
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import Popcorn from "../assets/Popcorn.png"
+import Flics from "../assets/Flics.png"
 
 
 const Home = ({ setSearchValue }) => {
@@ -34,17 +36,17 @@ const Home = ({ setSearchValue }) => {
   return (
     <>
       <nav className="content__wrapper">
-        <div className="blinker">
-          <img className="blinker__logo" src={Blinker} alt="blinker logo" />
+        <div className="popcorn">
+          <img className="popcorn__logo" src={Popcorn} alt="popcorn img" />
         </div>
         <div className="nav__links">
           <a className="nav__link" href="">
             {" "}
             Home{" "}
           </a>
-          <a className="nav__link" href="/findyourcar">
+          <a className="nav__link no-cursor" >
             {" "}
-            Find Your Car{" "}
+            Find Your Favourite Film{" "}
           </a>
           <a className="btn__contact"> CONTACT </a>
         </div>
@@ -53,12 +55,10 @@ const Home = ({ setSearchValue }) => {
         <div className="container">
           <div className="row">
             <h1 className="header__description">
-              Australia's most awarded <br />
-              car subscription platform
+              Your Favourite Films <br />
+              A Click Away
             </h1>
-            <h2 className="header__find">
-              Find Your Dream Car With <span className="purple">Blinker</span>
-            </h2>
+            
             <div className="search__button">
               <input
                 className="search__bar"
@@ -92,8 +92,8 @@ const Home = ({ setSearchValue }) => {
                 </svg>
               </button>
             </div>
-            <figure className="building__img">
-              <img className="img__building" src={Building} alt="" />
+            <figure className="flics__img">
+              <img className="img__flics" src={Flics} alt="" />
             </figure>
           </div>
         </div>

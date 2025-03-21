@@ -4,6 +4,7 @@ import axios from "axios";
 import Movie from "../Pages/Movie";
 import Spinner from "./Spinner";
 import { useNavigate } from "react-router-dom";
+import Popcorn from "../assets/Popcorn.png"
 
 const Search_Results = ({ searchValue, setSearchValue, movies, setMovies }) => {
   
@@ -30,11 +31,25 @@ const Search_Results = ({ searchValue, setSearchValue, movies, setMovies }) => {
   }
 
   useEffect(() => {
+    if(searchValue) {
+      fetchMovies()
+    }
+  }, [])
+
+  useEffect(() => {
     console.log(movies);
   }, [movies]);
 
- function sortMovies(event) {
-  console.log(event)
+ function sortMovies(filter) {
+  let sortedMovies = [...movies]
+  console.log(filter)
+  if (filter === 'NEW_TO_OLD') {
+    sortedMovies.sort((a, b) => Number(b.Year) - Number(a.Year) );
+  }
+  if (filter === 'OLD_TO_NEW') {
+    sortedMovies.sort((a, b) => Number(a.Year) - Number(b.Year) );
+  }
+  setMovies(sortedMovies)
  }
 
   return (
@@ -43,18 +58,14 @@ const Search_Results = ({ searchValue, setSearchValue, movies, setMovies }) => {
         <div className="overlay"></div>
         <nav className="content__wrapper">
           <div className="blinker">
-            <img
-              className="blinker__logo"
-              src={WhiteBlinker}
-              alt="blinker logo"
-            />
+            
           </div>
           <div className="nav__links">
             <a className="nav__link--white" href="">
               {" "}
               Home{" "}
             </a>
-            <a className="nav__link--white" href="/findyourcar">
+            <a className="nav__link--white">
               {" "}
               Find Your Favourite Film{" "}
             </a>
@@ -107,7 +118,7 @@ const Search_Results = ({ searchValue, setSearchValue, movies, setMovies }) => {
               </div>
               <select id="filter" onChange={(event) => sortMovies(event.target.value)}>
                 <option value="NEW_TO_OLD" > New to Old</option>
-                <option value="HIGH_TO_LOW"> Old to New</option>
+                <option value="OLD_TO_NEW"> Old to New</option>
               </select>
             </div>
             <div className="movies">

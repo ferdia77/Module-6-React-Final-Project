@@ -45,6 +45,15 @@ nav {
   justify-content: space-between;
 }
 
+.popcorn__logo {
+  height: 600;
+  width: 180px;
+}
+
+.no-cursor {
+  cursor: not-allowed;
+}
+
 .nav__links {
   display: flex;
   align-items: center;
@@ -89,6 +98,7 @@ nav {
   display: flex;
   align-items: center;
   cursor: pointer;
+  margin-right: 24px;
 }
 
 .btn__contact:hover {
@@ -113,11 +123,6 @@ nav {
   display: flex;
 }
 
-.blinker__logo {
-  height: 40px;
-  width: 136px;
-  z-index: 2;
-}
 
 .blinker__text {
   color: #6030b1;
@@ -183,15 +188,17 @@ nav {
   transition: all .25s ease;
 }
 
-.building__img {
+.flics__img {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 24px;
 }
 
-.img__building {
-  height: 256px;
-  width: 480px;
+.img__flics {
+  height: 190px;
+  width: 100%;
+  max-width: 1100px ;
 }
 
 .img__carpark {
@@ -360,7 +367,8 @@ width: 50%;
 
 .row__details {
   display: flex;
-  padding-top: 32px;
+  padding: 32px 32px 32px 32px;
+  margin: auto;
 }
 
 .movie__details {
@@ -386,4 +394,82 @@ width: 50%;
   width: 100%;
   height: 480px;
   background-color: lightgray;
+}
+
+@media (max-width: 1068px) {
+  .movie__poster--size {
+    width: 380px;
+  }
+}
+
+@media (max-width: 964px) {
+  .movie__poster--size {
+    width: 320px;
+  }
+
+  .header__browse {
+    visibility: hidden;
+  }
+
+  .content__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width:860px) {
+  .movie__poster--size {
+    width: 300px;
+  }
+
+  .movie__details {
+    text-align: center;
+  }
+
+}
+
+@media (max-width: 796px) {
+  .row__details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .movie__poster--size {
+    width: 420px;
+  }
+
+  .movie__poster {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 36px 0;
+  }
+
+  .movies__wrapper {
+    width: 100%;
+  }
+}
+
+@media(max-width: 680px) {
+  .movie__poster--size {
+    width: 280px;
+  }
+
+  .search__bar--two {
+    min-width: 500px;
+    max-width: 500px;
+  }
+}
+
+@media(max-width: 630px) {
+  .movie__poster--size {
+    width: 240px;
+  }
+}
+
+@media(max-width: 600px) {
+  .movie__poster--size {
+    width: 200px;
+  }
 }
